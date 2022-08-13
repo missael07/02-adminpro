@@ -1,1 +1,17 @@
-<p>grafica1 works!</p>
+<div class="row">
+    <div class="col-6">
+        <app-char title="Ventas Dona" [data]=doughnutChartData></app-char>
+    </div>
+    <div class="col-6">
+        <app-char title="Ventas Radar" [data]=radarChartData type="radar"></app-char>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <app-char title="Ventas Barras" [data]=barChartData type="bar"></app-char>
+    </div>
+    <div class="col-6">
+        <app-char title="Ventas Pie" [data]="pieChartData" type="pie"></app-char>
+    </div>
+</div>
