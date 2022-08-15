@@ -24,8 +24,11 @@ export class SidebarService {
       class: 'user-profile',
       submenu: [
         { title: 'Main', url: '/' },
-        { title: 'ProgressBar', url: 'progress' },
         { title: 'Grafica', url: 'grafica1' },
+        { title: 'ProgressBar', url: 'progress' },
+        { title: 'Promesas', url: 'promises' },
+        { title: 'RXJS', url: 'rxjs' },
+
       ]
     },
 
