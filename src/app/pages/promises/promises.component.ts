@@ -37,7 +37,8 @@ export class PromisesComponent implements OnInit {
     const promesa = new Promise(resolve => {
       fetch('https://reqres.in/api/users?page=2')
         .then(resp => resp.json())
-        .then(body => resolve(body.data));
+        .then(body => resolve(body.data))
+        .catch(console.log);
     });
     return promesa;
   }

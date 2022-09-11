@@ -15,7 +15,6 @@ export class SidebarService {
         { title: 'My Balance', url: '/' },
         { title: 'Inbox', url: '/' },
         { title: 'Account Setting', url: 'account-settings' },
-        { title: 'Logout', url: '/login' },
       ]
     },
     {
