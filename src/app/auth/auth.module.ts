@@ -4,11 +4,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { RecoverPasswordComponent } from './recover-password/recover-password.component'
+import { ComponentsModule } from '../components/components.module';
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
+    RecoverPasswordComponent,
   ],
   exports: [
     LoginComponent,
@@ -19,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http'
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ComponentsModule
   ]
 })
 export class AuthModule { }

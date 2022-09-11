@@ -9,6 +9,9 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { lanjuage } from 'src/app/helpers/languaje';
+
+const idiom = new lanjuage();
 
 const routes: Routes = [
     { 
@@ -19,7 +22,7 @@ const routes: Routes = [
             { path: '', component: DashboardComponent, data: { title: 'Main', pageComing: 'Dashboard'}  },
             { path: 'progress', component: ProgressComponent, data: { title: 'Progress', pageComing: 'Dashboard', path: ''   } },
             { path: 'grafica1', component: Grafica1Component, data: { title: 'Grafica', pageComing: 'Dashboard', path: ''   }  },
-            { path: 'account-settings', component: AccountSettingsComponent, data: { title: 'Ajustes de Cuenta', pageComing: 'Perfil', path: ''  }  },
+            { path: 'account-settings', component: AccountSettingsComponent, data: { title: idiom.accountSettings, pageComing: idiom.profile, path: ''  }  },
             { path: 'promises', component: PromisesComponent, data: { title: 'Promesas', pageComing: 'Dashboard', path: ''   }  },
             { path: 'rxjs', component: RxjsComponent, data: { title: 'RXJS', pageComing: 'Dashboard', path: ''   }  },
         ]

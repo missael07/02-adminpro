@@ -12,7 +12,7 @@
 .cursor {
     cursor: pointer;
 }
-#googleBtn {
+.center {
     align-items: center;
     display: flex;
     justify-content: center;

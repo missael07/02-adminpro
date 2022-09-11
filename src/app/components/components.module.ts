@@ -5,19 +5,21 @@ import { NgChartsModule } from 'ng2-charts';
 
 import { IncrementComponent } from './increment.component';
 import { CharComponent } from './char.component';
+import { ButtonComponent } from './button/button.component';
 
 
 
 @NgModule({
   declarations: [
     IncrementComponent,
-    CharComponent
+    CharComponent,
+    ButtonComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     NgChartsModule
   ],
-  exports: [ IncrementComponent,CharComponent]
+  exports: [ IncrementComponent,CharComponent, ButtonComponent]
 })
 export class ComponentsModule { }

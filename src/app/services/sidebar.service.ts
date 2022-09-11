@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
+import { lanjuage } from 'src/app/helpers/languaje';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SidebarService {
-
+  idiom = new lanjuage();
   menu: any = [
     {
-      title: 'Perfil',
+      title: this.idiom.profile,
       icon: '',
       class: 'user-profile',
       submenu: [
         { title: 'My Profile', url: '/' },
         { title: 'My Balance', url: '/' },
         { title: 'Inbox', url: '/' },
-        { title: 'Account Setting', url: 'account-settings' },
+        { title: this.idiom.accountSettings, url: 'account-settings' },
       ]
     },
     {

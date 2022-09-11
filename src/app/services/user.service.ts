@@ -32,8 +32,6 @@ export class UserService {
   }
 
   createUser(formData: RegisterForm) {
-    console.log('Creando usuario...');
-    
     return this.http.post(`${URL}users`, formData).pipe(
       tap((resp: any) => {
         localStorage.setItem('token', resp.token);
@@ -41,9 +39,7 @@ export class UserService {
     );
   }
 
-  login(formData: LoginForm) {
-    console.log('Loading...');
-    
+  login(formData: LoginForm) {    
     return this.http.post(`${URL}login`, formData).pipe(
       tap((resp: any) => {
         localStorage.setItem('token', resp.token);
@@ -54,7 +50,6 @@ export class UserService {
   googleSignIn(token: string) {
     return this.http.post(`${URL}login/google`, { token }).pipe(
       tap((resp: any) => {
-        console.log(resp);
         localStorage.setItem('token', resp.tokenUser);
       })
     );
@@ -63,10 +58,18 @@ export class UserService {
 
   logOut() {
     localStorage.removeItem('token');
-    google.accounts.id.revoke('lmpadillar@gmail.com', () => {
-      this.ngZone.run(() => {        
-        this.router.navigateByUrl('/login');
-      });
-    })
+    if (google.accounts.id) {
+        google.accounts.id.initialize({
+        client_id: '472483945643-6ncluvn5lllj6vc9lnq83s1q3tc9pcpb.apps.googleusercontent.com',
+        });
+        google.accounts.id.revoke('lmpadillar@gmail.com', () => {
+          this.ngZone.run(() => {        
+          this.router.navigateByUrl('/login');
+          });
+        })
+    } else {
+          this.router.navigateByUrl('/login');
+      
+    }
   }
 }
