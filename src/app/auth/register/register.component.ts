@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-
+import { lanjuage } from 'src/app/helpers/languaje';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -21,16 +21,16 @@ export class RegisterComponent  {
   }, {
     validators: this.samePasswords('password','password2'),
   });
-
+  showPassword = false;
+  showPassword2 = false;
+  idiom = new lanjuage();
   constructor(private router: Router,private fb: FormBuilder, private us: UserService) { }
 
   registerUser() {
     this.formSubmitted = true;
     if(this.registerForm.invalid || !this.registerForm.get('terms')?.value) return console.log('Formulario con errores');
-    
-    console.log('Posteando....');
+
     this.us.createUser(this.registerForm.value).subscribe((resp) => {
-      console.log(resp);
       this.displayAlert('Exito', 'Usuario creado con exito');
       this.router.navigateByUrl('/');
     }, (err) => {
