@@ -18,3 +18,12 @@
     justify-content: center;
     text-align: center;
 }
+.img {
+    width: 30px !important;
+    height: 30px;
+}
+
+.ddl-img {
+    width: 70px !important;
+    height: 70px;
+}

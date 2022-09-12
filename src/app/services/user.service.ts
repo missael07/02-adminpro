@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 
 import { RegisterForm, LoginForm } from '../interfaces/auth.interface';
 import { map, Observable, of } from 'rxjs';
+import { User } from '../models/user/user.model';
 
 declare const google: any;
 const URL = environment.base_url;
@@ -15,7 +16,10 @@ const URL = environment.base_url;
 })
 export class UserService {
 
-  constructor(private http: HttpClient, private router: Router, private ngZone: NgZone) { }
+  public user: User;
+  constructor(private http: HttpClient, private router: Router, private ngZone: NgZone) { 
+    this.user = new User('','','','','',false,'','');
+  }
 
 
   validateToken(): Observable<boolean> {
@@ -24,9 +28,12 @@ export class UserService {
     return this.http.get(`${URL}login/renew`, {
       headers: { 'x-auth-token': token }
     }).pipe(
-      tap((resp: any) => {
+      map((resp: any) => {
+        const { name, email, role, isActive, password, google, img, uid} = resp.user
+        this.user = new User(name,email,role, isActive,password,google, img, uid);
         localStorage.setItem('token', resp.token);
-      }), map(resp => true),
+        return true;
+      }),
       catchError( err => of(false))
     );
   }

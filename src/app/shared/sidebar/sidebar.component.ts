@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SidebarService } from '../../services/sidebar.service';
 
 import { lanjuage } from 'src/app/helpers/languaje';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/user/user.model';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,9 +14,10 @@ import { lanjuage } from 'src/app/helpers/languaje';
 export class SidebarComponent implements OnInit {
   menuItems: any[] = [];
   idiom = new lanjuage();
-
-  constructor(private sidebarService: SidebarService) {
-    this.menuItems = this.sidebarService.menu;
+  user: User;
+  constructor(private sidebarService: SidebarService, private us: UserService) {
+    this.menuItems = sidebarService.menu;
+    this.user = us.user;
   }
 
   ngOnInit(): void {

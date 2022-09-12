@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core';
 import { lanjuage } from 'src/app/helpers/languaje';
+import { User } from '../models/user/user.model';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SidebarService {
   idiom = new lanjuage();
-  menu: any = [
+  public user: User;
+  menu: any;
+  constructor(private us: UserService) {
+    this.user = us.user;
+    this.menu = [
     {
-      title: this.idiom.profile,
+      title: this.user.name,
       icon: '',
       class: 'user-profile',
       submenu: [
@@ -34,5 +40,6 @@ export class SidebarService {
 
   ];
 
-  constructor() { }
+  }
+  
 }

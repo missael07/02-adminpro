@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { lanjuage } from 'src/app/helpers/languaje';
+import { User } from '../../models/user/user.model';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,13 @@ import { lanjuage } from 'src/app/helpers/languaje';
 export class HeaderComponent implements OnInit {
   showMx = localStorage.getItem('lan') === 'ES' ? true : false;
   idiom = new lanjuage();
-  constructor(private us: UserService) { }
+
+  public user:User;
+  google? = false;
+  constructor(private us: UserService) {
+    this.user = us.user;
+    this.google = us.user.google;
+  }
 
   ngOnInit(): void {
   }
