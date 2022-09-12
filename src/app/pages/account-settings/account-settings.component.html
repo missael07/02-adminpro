@@ -5,7 +5,7 @@
                 <h4>{{ idiom.accountSettings }}</h4>
                 <div class="r-panel-body">
                     <ul id="themecolors" class="m-t-20">
-                        <li><b>Con el sidebar claro</b></li>
+                        <li><b>{{ idiom.lightSidebar }}</b></li>
                         <li>
                             <a (click)="changeTheme('default')" data-theme="default"
                                 class="selector default-theme">1</a>
@@ -26,7 +26,7 @@
                             <a (click)="changeTheme('megna')" data-theme="megna" class="selector megna-theme">6</a>
                         </li>
 
-                        <li class="d-block m-t-30"><b>Con el sidebar oscuro</b></li>
+                        <li class="d-block m-t-30"><b>{{ idiom.darkSidebar }} </b></li>
                         <li>
                             <a (click)="changeTheme('default-dark')" data-theme="default-dark"
                                 class="selector default-dark-theme">7</a>

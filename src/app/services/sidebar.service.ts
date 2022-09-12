@@ -14,11 +14,11 @@ export class SidebarService {
     this.user = us.user;
     this.menu = [
     {
-      title: this.user.name,
+      title: '',
       icon: '',
       class: 'user-profile',
       submenu: [
-        { title: 'My Profile', url: '/' },
+        { title: this.idiom.profile, url: 'profile' },
         { title: 'My Balance', url: '/' },
         { title: 'Inbox', url: '/' },
         { title: this.idiom.accountSettings, url: 'account-settings' },

@@ -27,3 +27,13 @@
     width: 70px !important;
     height: 70px;
 }
+.input-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+}
+
+.choose-img {
+    margin-bottom: 2px;
+    margin-top: 5px;
+}

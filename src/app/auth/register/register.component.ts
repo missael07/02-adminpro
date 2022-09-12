@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
-import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { lanjuage } from 'src/app/helpers/languaje';
+import {getMEssage, displayAlert} from 'src/app/helpers/getError';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -31,11 +31,12 @@ export class RegisterComponent  {
     if(this.registerForm.invalid || !this.registerForm.get('terms')?.value) return console.log('Formulario con errores');
 
     this.us.createUser(this.registerForm.value).subscribe((resp) => {
-      this.displayAlert('Exito', 'Usuario creado con exito');
+      displayAlert(this.idiom.successTitle, this.idiom.successMessage);
       this.router.navigateByUrl('/');
     }, (err) => {
       console.warn(err.error.msg)
-      this.displayAlert('error',err.error.msg)
+      const msg = getMEssage(err.error.msg);
+      displayAlert('Error',msg, err.status)
       
     });
     
@@ -62,10 +63,5 @@ export class RegisterComponent  {
     } 
   }
 
-  displayAlert(title:string, msg: string) {
-    
-    if (title === 'error') return Swal.fire(title, msg, 'error')
-    
-    return Swal.fire(title, msg, 'success');
-  }
+  
 }

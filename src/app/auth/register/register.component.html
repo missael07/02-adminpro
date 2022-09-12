@@ -12,7 +12,7 @@
                 <small class="fa">{{ idiom.registerSubtitle}}</small>
                 <div class="form-group m-t-20">
                     <div class="col-xs-12">
-                        <input class="form-control fa" type="text" [placeholder]=idiom.name formControlName="name">
+                        <input class="form-control fa" type="text" [placeholder]=idiom.nameField formControlName="name">
                         <small class="text-danger fa">
                             <p *ngIf="!registerForm.get('name')?.value && formSubmitted">{{idiom.nameError}}</p>
                         </small>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="form-group ">
                     <div class="col-xs-12">
-                        <input class="form-control fa" type="text" [placeholder]=idiom.email formControlName="email">
+                        <input class="form-control fa" type="text" [placeholder]=idiom.emailField formControlName="email">
                         <small class="text-danger fa">
                             <p *ngIf="!registerForm.get('email')?.value && formSubmitted">{{ idiom.emailError }}</p>
                         </small>
@@ -29,9 +29,9 @@
                 <div class="form-group ">
                     <div class="col-xs-12">
                         <div class="input-group mb3">
-                            <input class="form-control fa" type="password" [placeholder]=idiom.password formControlName="password"
+                            <input class="form-control fa" type="password" [placeholder]=idiom.passwordField formControlName="password"
                                 *ngIf="!showPassword">
-                            <input class="form-control fa" type="text" [placeholder]=idiom.password formControlName="password"
+                            <input class="form-control fa" type="text" [placeholder]=idiom.passwordField formControlName="password"
                                 *ngIf="showPassword">
                             <button class="btn text-uppercase btn-rounded waves-effect waves-light fa" type="button"
                                 (click)="showPassword = !showPassword"
@@ -47,9 +47,9 @@
                 <div class="form-group">
                     <div class="col-xs-12">
                         <div class="input-group mb3">
-                            <input class="form-control fa" type="password" [placeholder]=idiom.password formControlName="password2"
+                            <input class="form-control fa" type="password" [placeholder]=idiom.passwordField formControlName="password2"
                                 *ngIf="!showPassword2">
-                            <input class="form-control fa" type="text" [placeholder]=idiom.password formControlName="password2"
+                            <input class="form-control fa" type="text" [placeholder]=idiom.passwordField formControlName="password2"
                                 *ngIf="showPassword2">
                             <button class="btn text-uppercase btn-rounded waves-effect waves-light fa" type="button"
                                 (click)="showPassword2 = !showPassword2"
@@ -67,7 +67,7 @@
                     <div class="col-md-12">
                         <div class="checkbox checkbox-primary p-t-0 fa">
                             <input id="checkbox-signup" type="checkbox" formControlName="terms">
-                            <label for="checkbox-signup"><a href="#">{{ idiom.terms }}</a></label>
+                            <label for="checkbox-signup"><a href="#">{{ idiom.termsField }}</a></label>
                             <small class="text-danger fa">
                                 <p *ngIf="!registerForm.get('terms')?.value && formSubmitted">{{idiom.termsError}}</p>
                             </small>

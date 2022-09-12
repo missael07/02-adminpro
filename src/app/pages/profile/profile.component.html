@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    {{idiom.settings}} {{ user.name}}
+                </h4>
+                <form class="form p-t-20" [formGroup]="profileForm" (submit)="updateProfile()">
+                    <div class="form-group">
+                        <label for="exampleInputuname">{{ idiom.nameField }}</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname"
+                                [placeholder]="idiom.nameField" formControlName="name">
+                        </div>
+                        <small class="text-danger fa">
+                            <p *ngIf="!profileForm.get('name')?.value && formSubmitted">{{idiom.nameError}}</p>
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">{{ idiom.emailField }}</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <input type="email" class="form-control" id="email" [placeholder]="idiom.emailField"
+                                formControlName="email" [readonly]="user.google">
+                        </div>
+                        <small class="text-danger fa">
+                            <p *ngIf="!profileForm.get('email')?.value && formSubmitted">{{idiom.emailError}}</p>
+                        </small>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block waves-effect waves-light m-r-10"
+                        [disabled]="profileForm.invalid">{{
+                        idiom.submitBtn
+                        }} <i class="fa fa-save"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                </h4>
+                <div class="text-center">
+                    <img [src]="user.imageURL" alt="" class="input-img" *ngIf="!imgTemp" (click)=" change()">
+                    <img [src]="imgTemp" alt="" class="input-img" *ngIf="imgTemp" (click)=" change()">
+                </div>
+                <input type="file" id="imgInput" class="choose-img" (change)="changeImage($event)" hidden>
+                <br />
+                <button class="btn btn-success btn-block waves-effect waves-light m-r-10" *ngIf="!user.google"
+                    [disabled]="!imgFile" (click)="uploadImg()">{{ idiom.submitBtn
+                    }} <i class="fa fa-save"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

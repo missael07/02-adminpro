@@ -9,7 +9,7 @@
                 <a href="javascript:void(0)" class="text-center db"><img src="../assets/images/logo-icon.png" alt="Home" /><br/><img src="../assets/images/logo-text.png" alt="Home" /></a>
                 <div class="form-group m-t-40">
                     <div class="col-xs-12">
-                        <input class="form-control fa" type="email" [placeholder]=idiom.email formControlName="email">
+                        <input class="form-control fa" type="email" [placeholder]=idiom.emailField formControlName="email">
                         <small class="text-danger">
                             <p *ngIf="!loginForm.get('email')?.value && formSubmitted">{{ idiom.emailError }}</p>
                         </small>
@@ -18,9 +18,9 @@
                 <div class="form-group">
                     <div class="col-xs-12">
                         <div class="input-group mb3">
-                            <input class="form-control fa" type="password" [placeholder]=idiom.password formControlName="password"
+                            <input class="form-control fa" type="password" [placeholder]=idiom.passwordField formControlName="password"
                                 *ngIf="!showPassword">
-                            <input class="form-control fa" type="text" [placeholder]=idiom.password formControlName="password"
+                            <input class="form-control fa" type="text" [placeholder]=idiom.passwordField formControlName="password"
                                 *ngIf="showPassword">
                         
                             <button class="btn text-uppercase btn-rounded waves-effect waves-light fa" type="button"
@@ -38,7 +38,7 @@
                     <div class="col-md-12">
                         <div class="checkbox checkbox-primary p-t-0 fa">
                             <input id="checkbox-signup" type="checkbox" formControlName="remember">
-                            <label for="checkbox-signup"> {{ idiom.rememberMe }} </label>
+                            <label for="checkbox-signup"> {{ idiom.rememberMeField }} </label>
                         </div>
                         <a routerLink="/recover" id="to-recover" class="text-dark pull-right fa cursor"><i class="fa fa-lock m-r-5"></i> {{
                             idiom.forgotPassword }}</a> </div>

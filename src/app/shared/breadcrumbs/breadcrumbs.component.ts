@@ -11,14 +11,19 @@ import { filter, map, Subscription } from 'rxjs';
 export class BreadcrumbsComponent implements OnDestroy {
 
   public title: string = 'Sin título';
-  public pageComing: string = 'Perfil';
+  public pageComming: string = 'Perfil';
   public path: string = '';
+  public pathFather: string = '';
   public titleSubs$: Subscription;
+  public name?: string | null = ''
+  public currentPage: string = '';
   constructor(private router: Router) {
-    this.titleSubs$ = this.getDataRoute().subscribe(({ title, pageComing,path }) => {
+    this.titleSubs$ = this.getDataRoute().subscribe(({ title, pageComing,path, pathFather, currentPage }) => {
         this.title = title;
-        this.pageComing = pageComing;
-        this.path = path;
+        this.pageComming = pageComing;
+      this.path = path;
+      this.pathFather = pathFather;
+      this.currentPage = currentPage;
         document.title = `adminPro - ${title}`;
       });
   }
@@ -27,6 +32,8 @@ export class BreadcrumbsComponent implements OnDestroy {
   }
 
   getDataRoute() { 
+    console.log(localStorage.getItem('name'));
+      this.name = localStorage.getItem('name');
       return this.router.events.pipe(
       filter(event => event instanceof ActivationEnd),
       map((event) => event as ActivationEnd),

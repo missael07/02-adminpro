@@ -8,10 +8,15 @@
     <div class="col-md-7 align-self-center">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a [routerLink]="path">{{ pageComing }}</a>
-            </li>
-            <li class="breadcrumb-item active">
-                {{ title }}
+                <a [routerLink]="path">{{ name }}</a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <a [routerLink]="pathFather">
+                        {{ pageComming }}
+                    </a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        {{ currentPage }}
             </li>
         </ol>
     </div>

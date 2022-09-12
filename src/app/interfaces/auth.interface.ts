@@ -11,3 +11,8 @@ export interface LoginForm{
     password?: string | null| undefined,
     remember?: boolean | null| undefined
 }
+
+export interface UpdateUser {
+    email?: string | null,
+    name?: string | null,
+}

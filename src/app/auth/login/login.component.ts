@@ -2,8 +2,8 @@ import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, NgZone } from 
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
-import Swal from 'sweetalert2';
 import { lanjuage } from 'src/app/helpers/languaje';
+import { getMEssage,  displayAlert } from 'src/app/helpers/getError';
 
 
 declare const google: any;
@@ -28,6 +28,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
   constructor(private router: Router, private fb: FormBuilder, private us: UserService, private ngZone: NgZone) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('token')) {
+      this.router.navigateByUrl('/');
+    }
   }
 
   ngAfterViewInit(): void {
@@ -53,7 +56,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
       })
     }, (err) => {
       console.warn(err)
-      this.displayAlert('Error', err.error.error.token.msg)
+      const msg = getMEssage(err.error.msg);
+      displayAlert('Error', msg, err.status)
       
     });
   }
@@ -80,22 +84,15 @@ export class LoginComponent implements OnInit, AfterViewInit {
       }
       this.router.navigateByUrl('/');
 
-      // this.displayAlert('Exito','Usuario creado con exito')
-
     }, (err) => {
-      console.warn(err)
-      this.displayAlert('Error', err.error.msg || err.error.error.email.msg || err.error.error.password.msg)
+      console.warn(err.error.msg);
+      const msg = getMEssage(err.error.msg);
+      displayAlert('Error', msg)
       
     });
-    // 
+    
   }
 
-  displayAlert(title: string, msg: string) {
-    
-    if (title === 'Error') return Swal.fire(title, msg, 'error')
-    
-    return Swal.fire(title, msg, 'success');
-  }
 
 
 }

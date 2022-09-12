@@ -5,7 +5,7 @@ import { catchError, tap } from 'rxjs/operators'
 import { Router } from '@angular/router';
 
 
-import { RegisterForm, LoginForm } from '../interfaces/auth.interface';
+import { RegisterForm, LoginForm, UpdateUser } from '../interfaces/auth.interface';
 import { map, Observable, of } from 'rxjs';
 import { User } from '../models/user/user.model';
 
@@ -21,17 +21,22 @@ export class UserService {
     this.user = new User('','','','','',false,'','');
   }
 
+  get token(): string {
+    return  localStorage.getItem('token') || '';
+  }
+  get uid(): string {
+    return this.user.uid || '';
+  }
 
   validateToken(): Observable<boolean> {
-    const token = localStorage.getItem('token') || '';
-
     return this.http.get(`${URL}login/renew`, {
-      headers: { 'x-auth-token': token }
+      headers: { 'x-auth-token': this.token }
     }).pipe(
       map((resp: any) => {
         const { name, email, role, isActive, password, google, img, uid} = resp.user
         this.user = new User(name,email,role, isActive,password,google, img, uid);
         localStorage.setItem('token', resp.token);
+        localStorage.setItem('name', name);
         return true;
       }),
       catchError( err => of(false))
@@ -39,12 +44,23 @@ export class UserService {
   }
 
   createUser(formData: RegisterForm) {
-    return this.http.post(`${URL}users`, formData).pipe(
+    return this.http.post(`${URL}users`, formData ).pipe(
       tap((resp: any) => {
         localStorage.setItem('token', resp.token);
       })
     );
   }
+
+  updateUser(data: UpdateUser) {
+    return this.http.put(`${URL}users/${this.uid}`, data, {
+      headers: { 'x-auth-token': this.token }
+    }).pipe(
+      tap((resp: any) => {
+        // localStorage.setItem('token', resp.token);
+      })
+    );
+  }
+  
 
   login(formData: LoginForm) {    
     return this.http.post(`${URL}login`, formData).pipe(
@@ -65,6 +81,7 @@ export class UserService {
 
   logOut() {
     localStorage.removeItem('token');
+    localStorage.removeItem('name');
     if (google.accounts.id) {
         google.accounts.id.initialize({
         client_id: '472483945643-6ncluvn5lllj6vc9lnq83s1q3tc9pcpb.apps.googleusercontent.com',
