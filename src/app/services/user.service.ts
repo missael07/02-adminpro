@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { catchError, tap } from 'rxjs/operators'
+import { environment as prod } from 'src/environments/environment.prod';
+import { catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-
 
 import {
   RegisterForm,
@@ -15,7 +15,12 @@ import { map, Observable, of } from 'rxjs';
 import { User } from '../models/user/user.model';
 
 declare const google: any;
-const URL = 'https://immense-tundra-81384.herokuapp.com/api/';
+let URL = environment.base_url;
+
+if (prod.production) {
+  URL = prod.base_url;
+}
+
 @Injectable({
   providedIn: 'root',
 })
