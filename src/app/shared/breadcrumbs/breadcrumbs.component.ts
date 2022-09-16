@@ -32,7 +32,6 @@ export class BreadcrumbsComponent implements OnDestroy {
   }
 
   getDataRoute() { 
-    console.log(localStorage.getItem('name'));
       this.name = localStorage.getItem('name');
       return this.router.events.pipe(
       filter(event => event instanceof ActivationEnd),

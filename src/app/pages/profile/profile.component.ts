@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
   public imgFile: any;
   public imgTemp: any;
   public formSubmitted = false;
-
+  public roles: any[] = [];
   constructor(private us: UserService, private fb: FormBuilder, private fu: FileUploadService) {
     this.user = us.user;
   }
@@ -30,8 +30,15 @@ export class ProfileComponent implements OnInit {
     this.profileForm = this.fb.group({
       name: [this.user.name, Validators.required],
       email: [this.user.email, [Validators.email, Validators.required]],
-      rol: ['USER_ROLE', [Validators.required]],
+      role: [this.user.role, [Validators.required]],
       
+    });
+    this.loadRoles();
+  }
+  loadRoles() {
+    this.us.loadRoles().subscribe((resp: any) => {
+      console.log(resp);
+      this.roles = resp.roles;
     });
   }
 
@@ -67,6 +74,7 @@ export class ProfileComponent implements OnInit {
   
       reader.onloadend = () => {
         this.imgTemp = reader.result;
+        this.uploadImg()
       }
   
       return;
@@ -79,7 +87,7 @@ export class ProfileComponent implements OnInit {
     }
     else {
       this.fu.updatePhoto(this.imgFile, 'users', this.user.uid).then(img => {
-        this.user.img = img;      
+        this.user.img = img;   
         displayAlert(this.idiom.saveTitle, this.idiom.saveMessage, 'success');        
       }, (err) => {
         const msg = getMEssage(err.error.msg);
@@ -95,5 +103,10 @@ export class ProfileComponent implements OnInit {
     }
     const element = document.getElementById('imgInput');
     element?.click();
+  }
+
+  changeRole(user: User) {
+    this.us.changeRole(user).subscribe(resp => {
+    })
   }
 }

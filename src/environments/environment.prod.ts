@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  base_url: 'http://localhost:3005/api/users'
+  base_url: 'https://immense-tundra-81384.herokuapp.com/api/',
 };

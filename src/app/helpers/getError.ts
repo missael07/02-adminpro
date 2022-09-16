@@ -29,6 +29,9 @@ export const getMEssage = (err: string): string => {
         case 'ValidationField':
             message = idiom.validationField;
             break;
+        case 'SuccessDeleted':
+            message = idiom.successDeletedMessage;
+            break;
     }
 
     return message;

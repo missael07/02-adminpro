@@ -1,3 +1,5 @@
+import { User } from "../models/user/user.model"
+
 export interface RegisterForm {
     name: string,
     email: string,
@@ -15,4 +17,11 @@ export interface LoginForm{
 export interface UpdateUser {
     email?: string | null,
     name?: string | null,
+    role?: string | null
+}
+
+export interface LoadUser {
+    users: User[],
+    total: number,
+    ok: boolean,
 }

@@ -18,6 +18,26 @@ export class lanjuage{
     public lightSidebar = localStorage.getItem('lan') === 'ES' ? 'Sidebar Claro' : 'Light Sidebar';
     public darkSidebar = localStorage.getItem('lan') === 'ES' ? 'Sidebar Obscuro' : 'Dark Sidebar';
     public editProfile = localStorage.getItem('lan') === 'ES' ? 'Editar Perfil' : 'Edit Profile';
+    public settingsTitle = localStorage.getItem('lan') === 'ES' ? 'Configuración' : 'Settings';
+    public users = localStorage.getItem('lan') === 'ES' ? 'Usuarios' : 'Users';
+    public hospitals = localStorage.getItem('lan') === 'ES' ? 'Hospitales' : 'Hospitals';
+    public doctors = localStorage.getItem('lan') === 'ES' ? 'Medicos' : 'Doctors';
+    public wait = localStorage.getItem('lan') === 'ES' ? 'Por favor espere.' : 'Please wait.';
+    public loading = localStorage.getItem('lan') === 'ES' ? 'Cargando...' : 'Loading...';
+    public back = localStorage.getItem('lan') === 'ES' ? 'Anteriores' : 'Previus';
+    public next = localStorage.getItem('lan') === 'ES' ? 'Siguientes' : 'Next';
+    public usersRegistered = localStorage.getItem('lan') === 'ES' ? 'Usuarios registrados' : 'Users registered';
+    public role = localStorage.getItem('lan') === 'ES' ? 'Rol' : 'Role';
+    public search = localStorage.getItem('lan') === 'ES' ? 'Buscar' : 'Search';
+    public isGoogle = localStorage.getItem('lan') === 'ES' ? 'Es usuario de Google?' : 'Is Google user?';
+    public noDataFound = localStorage.getItem('lan') === 'ES' ? 'No se encontraron registros.' : 'No Data found.';
+    public impersonate = localStorage.getItem('lan') === 'ES' ? 'Iniciar sesión como ' : 'Impersonate ';
+
+
+
+
+
+
 
     //#endregion Static Text
 
@@ -44,6 +64,10 @@ export class lanjuage{
     public successTitle = localStorage.getItem('lan') === 'ES' ? 'Exito' : 'Succesful';
     public successMessage = localStorage.getItem('lan') === 'ES' ? 'Registro creado con exito.' : 'Registered succesfully.';
     public successDeletedMessage = localStorage.getItem('lan') === 'ES' ? 'Registro eliminado con exito.' : 'Registered delted succesfully.';
+    public deleteTitle = localStorage.getItem('lan') === 'ES' ? 'Estás seguro?' : 'Are you sure?';
+    public deleteSubTitle = localStorage.getItem('lan') === 'ES' ? 'Vas a eliminar a {0}, no podrás revertir esta acción!' : `You gonna delete to {0}, you won't be able to revert this! `;
+    public confirmDeleteMessage = localStorage.getItem('lan') === 'ES' ? 'Si, borralo!' : 'Yes, delete it!';
+    public confirmMessage = localStorage.getItem('lan') === 'ES' ? 'Si!' : 'Yes!';
     
     //#endregion Modal Messages
 

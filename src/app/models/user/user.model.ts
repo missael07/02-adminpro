@@ -17,10 +17,11 @@ export class User {
 
     get imageURL() {
         if (this.google) {
-            return this.img;
+          return this.img;
         }
         if (this.img) {
-            return `${base_url}upload/users/${this.img}`;
+          console.log(this.img);
+          return `${base_url}upload/users/${this.img}`;
         }
         // upload/users/
         return `${base_url}upload/users/noimage.jpg`;;

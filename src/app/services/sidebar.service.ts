@@ -34,7 +34,16 @@ export class SidebarService {
         { title: 'ProgressBar', url: 'progress' },
         { title: 'Promesas', url: 'promises' },
         { title: 'RXJS', url: 'rxjs' },
-
+      ]
+      },
+      {
+      title: this.idiom.settingsTitle,
+      icon: 'mdi mdi-folder-lock-open',
+      class: 'user-profile',
+      submenu: [
+        { title: this.idiom.users, url: 'users' },
+        { title: this.idiom.hospitals, url: 'hopsitals' },
+        { title: this.idiom.doctors, url: 'doctors' },
       ]
     },
 
