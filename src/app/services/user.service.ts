@@ -17,9 +17,9 @@ import { User } from '../models/user/user.model';
 declare const google: any;
 let URL = environment.base_url;
 
-if (prod.production) {
-  URL = prod.base_url;
-}
+// if (prod.production) {
+//   URL = prod.base_url;
+// }
 
 @Injectable({
   providedIn: 'root',
